@@ -9,6 +9,15 @@ import java.util.Objects;
 @Entity
 public class Categoria implements Serializable {
 
+    public Categoria() {
+        super();
+    }
+    public Categoria(int id, String nome, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -16,16 +25,6 @@ public class Categoria implements Serializable {
     private String descricao;
     @OneToMany(mappedBy = "categoria")
     private List<Livro> livros = new ArrayList<>();
-
-    public Categoria(int id, String nome, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
-
-    public Categoria() {
-        super();
-    }
 
     public int getId() {
         return id;

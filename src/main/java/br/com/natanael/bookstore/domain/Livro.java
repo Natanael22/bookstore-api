@@ -7,15 +7,9 @@ import java.util.Objects;
 @Entity
 public class Livro  implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String titulo;
-    private String nomeAutor;
-    private String texto;
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    public Livro() {
+        super();
+    }
 
     public Livro(int id, String titulo, String nomeAutor, String texto, Categoria categoria) {
         this.id = id;
@@ -25,9 +19,15 @@ public class Livro  implements Serializable {
         this.categoria = categoria;
     }
 
-    public Livro() {
-        super();
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String titulo;
+    private String nomeAutor;
+    private String texto;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     public Categoria getCategoria() {
         return categoria;
