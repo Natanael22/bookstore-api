@@ -24,8 +24,8 @@ public class BookstoreApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Categoria cat = new Categoria (0,"TI", "livro para nerds");
-		Livro livro = new Livro(0, "java for dummies", "zacarias", "aprendendo java do zero", cat);
+		Categoria cat = new Categoria (0,"cozinha", "livro para iniciantes");
+		Livro livro = new Livro(0, "cozinha for dummies", "zacarias", "aprendendo cozinhar do zero", cat);
 
 		cat.getLivros().addAll(Arrays.asList(livro));
 
