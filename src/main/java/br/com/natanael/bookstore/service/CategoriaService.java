@@ -1,6 +1,7 @@
 package br.com.natanael.bookstore.service;
 
 import br.com.natanael.bookstore.domain.Categoria;
+import br.com.natanael.bookstore.exception.ObjectNotFoundException;
 import br.com.natanael.bookstore.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ public class CategoriaService {
     public Categoria findById(int id){
 
         Optional<Categoria> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("objeto nao encontrado: id: "+id +
+                " tipo: " + Categoria.class.getName()));
     }
 
     public void save(Categoria categoria){
