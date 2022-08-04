@@ -32,6 +32,6 @@ public class DBService {
         this.livroRepository.saveAll(Arrays.asList(livrocoz));
 
         this.categoriaRepository.saveAll(Arrays.asList(catned));
-        this.livroRepository.saveAll(Arrays.asList(livrocoz));
+        this.livroRepository.saveAll(Arrays.asList(livroned));
     }
 }
