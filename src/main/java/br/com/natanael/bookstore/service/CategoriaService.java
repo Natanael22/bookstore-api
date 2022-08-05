@@ -41,6 +41,7 @@ public class CategoriaService {
         return repository.save(categoria);
     }
     public void deleteById(int id){
+        findById(id);
         repository.deleteById(id);
     }
 
