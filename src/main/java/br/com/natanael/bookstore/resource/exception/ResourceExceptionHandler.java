@@ -16,4 +16,10 @@ public class ResourceExceptionHandler {
         StandardError erro = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),o.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
     }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException o, ServletRequest srv){
+        StandardError erro = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),o.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
 }

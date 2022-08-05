@@ -5,6 +5,7 @@ import br.com.natanael.bookstore.exception.ObjectNotFoundException;
 import br.com.natanael.bookstore.repositories.CategoriaRepository;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,9 +41,15 @@ public class CategoriaService {
 
         return repository.save(categoria);
     }
-    public void deleteById(int id){
+    public void deleteById(int id) {
         findById(id);
-        repository.deleteById(id);
+
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e){
+            throw new br.com.natanael.bookstore.resource.exception.DataIntegrityViolationException(
+                    "existem livros associoados a essa categoria");
+        }
     }
 
     public List<Categoria> findAll(){
