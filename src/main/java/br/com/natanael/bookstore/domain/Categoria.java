@@ -1,5 +1,6 @@
 package br.com.natanael.bookstore.domain;
 
+import javax.annotation.processing.SupportedOptions;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Categoria implements Serializable {
         super();
     }
     public Categoria(int id, String nome, String descricao) {
+        super();
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

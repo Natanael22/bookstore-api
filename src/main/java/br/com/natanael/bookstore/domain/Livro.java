@@ -12,6 +12,7 @@ public class Livro  implements Serializable {
     }
 
     public Livro(int id, String titulo, String nomeAutor, String texto, Categoria categoria) {
+        super();
         this.id = id;
         this.titulo = titulo;
         this.nomeAutor = nomeAutor;
