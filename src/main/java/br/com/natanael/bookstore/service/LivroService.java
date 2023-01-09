@@ -17,8 +17,13 @@ public class LivroService {
     @Autowired
     private LivroRepository repository;
 
-    public Livro save(Livro livro){
+    @Autowired
+    private CategoriaService categoriaService;
+
+    public Livro save(int catId, Livro livro){
         livro.setId(0);
+        Categoria cat = categoriaService.findById(catId);
+        livro.setCategoria(cat);
         return repository.save(livro);
     }
 
@@ -43,11 +48,15 @@ public class LivroService {
         }
     }
 
-    public Livro update(int id, Livro livro){
+    public Livro update(int id, Livro newlivro){
         Livro existente = findById(id);
-        livro.setNomeAutor(existente.getNomeAutor());
-        livro.setTexto(existente.getTexto());
-        livro.setTitulo(existente.getTitulo());
-        return repository.save(livro);
+        livroTransform(existente, newlivro);
+        return repository.save(existente);
+    }
+
+    private void livroTransform(Livro existente, Livro newlivro){
+        existente.setNomeAutor(newlivro.getNomeAutor());
+        existente.setTexto(newlivro.getTexto());
+        existente.setTitulo(newlivro.getTitulo());
     }
 }

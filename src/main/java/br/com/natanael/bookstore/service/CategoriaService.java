@@ -1,6 +1,7 @@
 package br.com.natanael.bookstore.service;
 
 import br.com.natanael.bookstore.domain.Categoria;
+import br.com.natanael.bookstore.dtos.CategoriaDTO;
 import br.com.natanael.bookstore.exception.ObjectNotFoundException;
 import br.com.natanael.bookstore.repositories.CategoriaRepository;
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -28,16 +29,11 @@ public class CategoriaService {
         categoria.setId(0);
         return repository.save(categoria);
     }
-    public Categoria update(int id, Categoria newCategoria){
+    public Categoria update(int id, CategoriaDTO categoriaDTO){
 
-        //System.out.println("chegou esse id " + id);
-        Categoria categoria = findById(id);
-        //System.out.println("id existente " +categoria.getId());
-        //System.out.println("nome existente " +categoria.getNome());
-        categoria.setNome(newCategoria.getNome());
-        categoria.setDescricao(newCategoria.getDescricao());
-        //System.out.println("novo nome " +newCategoria.getNome());
-        //System.out.println("id " +categoria.getId());
+        Categoria categoria = findById(id);;
+        categoria.setNome(categoriaDTO.getNome());
+        categoria.setDescricao(categoriaDTO.getDescricao());
 
         return repository.save(categoria);
     }
