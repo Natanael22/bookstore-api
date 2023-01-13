@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/livros")
 public class LivroResource {
@@ -20,7 +22,7 @@ public class LivroResource {
     private LivroService service;
 
     @PostMapping
-    public ResponseEntity<Livro> save(@RequestParam(value = "categoria", defaultValue = "0") int idCat, @RequestBody Livro livro){
+    public ResponseEntity<Livro> save(@RequestParam(value = "categoria", defaultValue = "0") int idCat,@Valid @RequestBody Livro livro){
         Livro obj = service.save(idCat, livro);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(livro.getId()).toUri();
         return ResponseEntity.created(uri).build();
@@ -40,13 +42,13 @@ public class LivroResource {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<LivroDTO> update(@PathVariable int id, @RequestBody Livro livro){
+    public ResponseEntity<LivroDTO> update(@PathVariable int id,@Valid @RequestBody Livro livro){
         Livro newlivro = service.update(id,livro);
         return ResponseEntity.ok().body(new LivroDTO(newlivro));
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<LivroDTO> updatePatch(@PathVariable int id, @RequestBody Livro livro){
+    public ResponseEntity<LivroDTO> updatePatch(@PathVariable int id,@Valid @RequestBody Livro livro){
         Livro newlivro = service.update(id,livro);
         return ResponseEntity.ok().body(new LivroDTO(newlivro));
     }
