@@ -22,16 +22,16 @@ public class DBService {
         Categoria catcoz = new Categoria (0,"cozinha", "livro para iniciantes");
         Livro livrocoz = new Livro(0, "cozinha for dummies", "zacarias", "aprendendo cozinhar do zero", catcoz);
 
-        Categoria catned = new Categoria (0,"TI", "livro para nerds");
+        Categoria catned = new Categoria (0,"tecnologia", "livro para nerds");
         Livro livroned = new Livro(0, "java for dummies", "zacarias", "aprendendo java do zero", catned);
 
         catcoz.getLivros().addAll(Arrays.asList(livrocoz));
         catned.getLivros().addAll(Arrays.asList(livroned));
 
-        this.categoriaRepository.saveAll(Arrays.asList(catcoz));
-        this.livroRepository.saveAll(Arrays.asList(livrocoz));
+        //this.categoriaRepository.saveAll(Arrays.asList(catcoz));
+        //this.livroRepository.saveAll(Arrays.asList(livrocoz));
 
-        this.categoriaRepository.saveAll(Arrays.asList(catned));
-        this.livroRepository.saveAll(Arrays.asList(livroned));
+        //this.categoriaRepository.saveAll(Arrays.asList(catned));
+        //this.livroRepository.saveAll(Arrays.asList(livroned));
     }
 }
