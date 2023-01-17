@@ -28,10 +28,10 @@ public class DBService {
         catcoz.getLivros().addAll(Arrays.asList(livrocoz));
         catned.getLivros().addAll(Arrays.asList(livroned));
 
-        //this.categoriaRepository.saveAll(Arrays.asList(catcoz));
-        //this.livroRepository.saveAll(Arrays.asList(livrocoz));
+        this.categoriaRepository.saveAll(Arrays.asList(catcoz));
+        this.livroRepository.saveAll(Arrays.asList(livrocoz));
 
-        //this.categoriaRepository.saveAll(Arrays.asList(catned));
-        //this.livroRepository.saveAll(Arrays.asList(livroned));
+        this.categoriaRepository.saveAll(Arrays.asList(catned));
+        this.livroRepository.saveAll(Arrays.asList(livroned));
     }
 }
