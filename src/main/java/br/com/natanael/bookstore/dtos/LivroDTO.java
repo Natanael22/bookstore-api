@@ -1,5 +1,6 @@
 package br.com.natanael.bookstore.dtos;
 
+import br.com.natanael.bookstore.domain.Categoria;
 import br.com.natanael.bookstore.domain.Livro;
 
 import java.io.Serializable;
@@ -19,7 +20,6 @@ public class LivroDTO implements Serializable {
         this.titulo = livro.getTitulo();
         this.nomeAutor = livro.getNomeAutor();
         this.texto = livro.getTexto();
-
     }
 
     public int getId() {
@@ -53,4 +53,6 @@ public class LivroDTO implements Serializable {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
+
 }
