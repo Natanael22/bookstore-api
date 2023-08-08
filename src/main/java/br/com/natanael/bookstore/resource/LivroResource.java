@@ -34,9 +34,16 @@ public class LivroResource {
         return ResponseEntity.ok().body(livro);
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public ResponseEntity<List<LivroDTO>> findAll(){
         List<Livro> list = service.findAdll();
+        List<LivroDTO> listDto = list.stream().map(xpto -> new LivroDTO(xpto)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<LivroDTO>> findAllCategoriaByid(@RequestParam(value = "categoria", defaultValue = "0") int id_cat){
+        List<Livro> list = service.findAllByCategoria(id_cat);
         List<LivroDTO> listDto = list.stream().map(xpto -> new LivroDTO(xpto)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }

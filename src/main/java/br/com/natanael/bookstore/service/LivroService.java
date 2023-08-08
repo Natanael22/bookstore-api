@@ -31,6 +31,11 @@ public class LivroService {
         return repository.findAll();
     }
 
+    public List<Livro> findAllByCategoria(int id_cat){
+        categoriaService.findById(id_cat);
+        return repository.findAllByCategoria(id_cat);
+    }
+
     public Livro findById(int id) {
 
         Optional<Livro> optional = repository.findById(id);
